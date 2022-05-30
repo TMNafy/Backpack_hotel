@@ -1,0 +1,759 @@
+#include <iostream>                                                               
+#include <windows.h>
+#include <algorithm>
+
+
+using namespace std;
+
+int p = 0;
+
+class Customer	{			//class of customer
+
+char name[20], age[2], checkin[10], checkout[10];
+
+private : 
+
+	int Custid;
+	string FirstName;
+	string LastName;
+	int CustPhone;
+	string CustEmail;
+
+public:		
+	Customer(){}
+	int getCustid;
+    void setFirstName(string f){f = FirstName;}
+    string getFirstName(){return FirstName;}
+    void setLastName(string l){l = LastName;}
+    string getLastName(){return LastName;}
+    void setCustPhone(string n){ n = CustPhone;}
+    int getCustPhone() {return CustPhone;}
+    void setCustEmail(string m) {m = CustEmail;}
+    
+    void Register(string f, string l, string n, string m)
+	{
+		system ("cls");
+		cout << "\n\tRegisteration customer .. " <<endl;
+		system ("pause");
+	
+	}
+	 
+    
+};
+
+
+class User : public Customer  {
+	 
+private :
+	string CustEmail;
+	
+public :
+	User(){}
+	void setCustEmail(string e){e=CustEmail;}
+	string getCustEmail() {return CustEmail;}
+	void login (string e)
+	{
+		system("cls");
+		cout << "\n\t\t\t\t\t\t\tLog In as User " << endl;
+		cout <<"\n\t Successfull" << endl;
+		
+	}
+		
+};
+
+
+
+class Booking { 		//class of booking
+
+private: 
+	
+	int BookingID;
+	char ReservationInfo[10];
+	string checkInDate;
+	string checkOutDate;
+	double price; 
+	double totalprice;
+	
+public: 
+
+	Booking(){}
+	int getBookingID() {return BookingID;}
+	void setCheckInDate(string c){c = checkInDate;}
+    string getCheckInDate(){return checkInDate;}
+	void setCheckOutDate(string c){c = checkOutDate;}
+    string getCheckOutDate(){return checkOutDate;}
+    void setPrice(string p){p = price;}
+    double getPrice(){return price;}
+    void setTotalPrice(string t){t = totalprice;}
+    double getTotalPrice(){return totalprice;}
+	string getReservationInfo() {return ReservationInfo;}
+	void confirmBooking()
+		{
+			system ("cls");
+			system("pause");
+			cout << "\n\t Confirm Booking... " <<endl;
+			
+		}
+	void cancelBooking()
+	{
+		system("cls");
+		system("pause");
+		cout << "\n\t Cancel Booking... " <<endl;
+			
+	}
+	
+	void checkRoomAvailibility (int r, string c, string s, double t, double p)
+	{
+		system ("cls");
+		cout << "\n\t Check Room Availibitility" << endl;
+		cout << "\n\t Num Of Room: "<< r << endl;
+		cout << "\n\t\tCheck-In Date:  " << c << endl;
+        cout << "\n\t\tCheck-Out Date: " << s << endl;
+        cout << "\n\t\tRoom is available!" << endl;	
+	}
+
+};
+
+
+class room { //class of room
+
+public:
+	
+	string roomType;
+	int rentRate;
+	int roomAvailability;
+	int roomRate;
+	string getroomtype() { return roomType;}
+	int getroomrate() {return roomRate;}
+	void setroomRate (int q) {q =  roomRate;}
+	void setroomType (string o) {o = roomType;}
+	void TypeOfRoom (string o, int q)
+	{
+	 	system ("cls");
+	
+		  cout<<"\t\t\t\t\t\t1) Standard Room (RM100.00)\n";
+	      cout<<"\t\t\t\t\t\t2) King Room (RM120.00)\n";   
+          cout<<"\t\t\t\t\t\t3) Family Room (RM140.00)\n";
+	    
+	}
+	
+};
+
+
+class TypeOfRoom : public room    //class derive from room
+
+{  		
+	string roomType;
+	int rentRate;
+	int roomAvailability;
+	int roomRate;
+	string getroomtype() { return roomType;}
+	int getroomrate() {return roomRate;}
+	void setroomRate (int q) {q =  roomRate;}
+	void setroomType (string o) {o = roomType;}
+	
+	
+};
+
+class Receipt {
+	private : 
+		string receiptNum;
+		string date;
+		string durationDay;
+		string durationNight;
+		string FirstName;
+		string LastName;
+		string room;
+		double totalPayment;
+	
+	public :
+		Receipt(){}
+		void setReceiptNum(string r){r = receiptNum;}
+        string getReceiptNum(){return receiptNum;}
+        void setDate(string d){d = date;}
+        string getDate(){return date;}
+        void setDurationDay(string d){d = durationDay;}
+        string getDurationDay(){return durationDay;}
+        void setDurationNight(string n){n = durationNight;}
+        string getDurationNight(){return durationNight;}
+        void setfirstName(string f){f = FirstName;}
+        string getfirstName(){return FirstName;}
+        void setlastName(string l){l = LastName;}
+        string getlastName(){return LastName;}
+        void setTotalPayment(string t){t = totalPayment;}
+        double getTotalPayment(){return totalPayment;}
+        void generateReceipt()
+            {
+            	
+                system("cls");
+                cout << "\n\t\tGenerating Receipt" << endl;
+                system ("pause");
+                
+            }	
+			};
+
+
+int main () {		
+	
+	Booking bk;
+	Customer ct;
+	room rm;
+	Receipt rp;
+	User ur;
+	int valid = 0;
+	string checkInDate = "";
+    string checkOutDate = "";
+    string email = "";
+	string FirstName = "";
+	string LastName = "";
+	string CustPhone = "";
+	string CustEmail = " ";
+	double price=0;
+	double totalprice =0;
+	int room_number=0;
+	int reciept_no = 0;
+	int order_num = 0;
+	int numRoom=0;
+	int choice =0;
+	int choice2=0;
+	int User =0;
+	int day =0;
+	
+	while (valid == 0)
+	
+	 {
+	 	system ("cls");
+		cout<<"\n\n\t\t\t\t  ====================================================";
+        cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        cout<<"\t\t\t\t  ====================================================\n\n";
+    	cout<< "\n\t\t\t\t\t\t1) Booking your room" << endl;
+		cin >> choice;
+		
+		system ("cls"); 
+		cout << "\n\n\n\n\n\t\t\t\t\t\tBooking Option: " << endl;
+		cout << "\n\t\t\t\t\tChoose how many room you want to book : ";
+    	cin >> numRoom;
+
+    	fflush(stdin);
+    
+    	cout << "\n\t\t\t\t\tEnter Check-In Date (dd/mm/yyyy): ";
+    	getline(cin, checkInDate);
+		cout << "\n\t\t\t\t\tEnter Check-Out Date (dd/mm/yyyy): ";
+    	getline(cin, checkOutDate);
+    
+    	cout << "\n\t\t\t\t\tHow many days do you wish to stay ? : ";
+    	cin >> day;
+			
+			if (numRoom < 1 || numRoom > 6)
+		{
+			system ("cls");
+			printf ("\t\t Invalid number of room entered! ");
+				
+		}
+			if (checkInDate == "") 
+		{
+			system ("cls");
+			printf ("\t\t Invalid check-in date");
+
+		}
+		
+		if (checkOutDate == "") 
+		{
+			system ("cls");
+			printf ("\t\t Invalid check-out date");
+			
+		}
+		
+		if ((numRoom > 0 && numRoom <7) && (checkInDate !="") && (checkOutDate !=""))
+		{
+			valid = 1;
+			bk.checkRoomAvailibility(numRoom, checkInDate , checkOutDate, price, totalprice);
+		{
+	
+		if (choice2 != 1 || choice != 2 || choice != 3 ) 
+			
+				
+			{
+				system("cls");
+				cout<<"\n\n\t\t\t\t ====================================================";
+       			cout<<"\n\t\t\t\t\t\t WELCOME TO BUDGET HOTEL\n";
+      			cout<<"\t\t\t\t ====================================================\n\n";
+    				
+    			cout << "\n\t\t\t\t\tDo You Have an Account?";
+                cout << "\n\t\t\t\t\t1. Yes, Log In";
+                cout << "\n\t\t\t\t\t2. No, Register Now" << endl;
+                cout << "\n\t\t\t\t\tEnter Choice: ";
+                cin >> choice;
+                fflush(stdin);
+                
+                
+				
+                if (choice == 1) //LOGIN USING EMAIL
+                {
+                system ("cls");
+				cout<<"\n\n\t\t\t\t  ====================================================";
+        		cout<<"\n\t\t\t\t\t\t WELCOME TO BUDGET HOTEL\n";
+        		cout<<"\t\t\t\t  ====================================================\n\n";
+        		cout << "\n\t\t\t\t\tLog In"  << endl;
+        	    cout << "\n\t\t\t\t\tEnter Email (yourname@gmail.com): ";
+           		getline(cin, CustEmail);
+            
+        			if (CustEmail == "")
+        			{
+        				system ("cls");
+        				cout << "\t\t\t\tPlease enter your email" << endl;
+        				
+					}
+
+			    
+						{
+							
+						system("cls");
+						cout<<"\n\n\t\t\t\t  ====================================================";
+        				cout<<"\n\t\t\t\t\t\t WELCOME TO Backpackers Hostel\n";
+        				cout<<"\t\t\t\t  ====================================================\n\n";
+						cout <<"\n\n\t\t\t\t\t\tType of Room that we offer ";
+    					cout<<"\n\n\t\t\t\t\t\t1) Standard Room (RM100.00)\n";
+	      				cout<<"\t\t\t\t\t\t2) King Room (RM120.00)\n";   
+         				cout<<"\t\t\t\t\t\t3) Family Room (RM140.00)\n";
+	         			cout << "\n\t\t\t\t\t\tEnter Choice: ";
+	         			cin >> choice;
+						while (choice != 1 || choice != 2 || choice != 3 )
+						
+						if (choice == 1 )
+						{
+						cout<<"\n\t\t\t\tStandard Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1001' '1002' '1003' '1004' '1005'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*100;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+									cout<<"\n\n\t\t\t\t  ====================================================";
+        							cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel\n";
+        							cout<<"\t\t\t\t  ====================================================\n\n";
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+
+										rp.generateReceipt();
+									
+										choice = 0;		
+										while (choice < 1 || choice > 3)
+										{
+											system ("cls");
+											
+											cout<<"\n\n\t\t\t\t  ====================================================";
+        									cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel\n";
+        									cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+												cout<<"\t\t\t\t\t\tCustomer ID :"<<CustEmail<<endl;
+												cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+												cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+
+											 	cout<<"\t\t\t\t  ====================================================\n\n";
+											 	system ("pause");
+											 	system("cls");
+										}		
+									}
+								}
+							}
+							
+							
+						else if (choice == 2 )
+						{
+						cout<<"\n\t\t\t\tKing Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1006' '1007' '1008' '1009' '1010'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*120;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+										cout<<"\n\n\t\t\t\t  ====================================================";
+        								cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel\n";
+        								cout<<"\t\t\t\t  ====================================================\n\n";
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+
+										rp.generateReceipt();
+									
+										choice = 0;		
+										while (choice < 1 || choice > 3)
+										{
+											system ("cls");
+											
+												cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpackers Hostel\n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+												cout<<"\t\t\t\t\t\tCustomer ID :"<<CustEmail<<endl;
+												cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+												cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+
+											  	cout<<"\t\t\t\t  ====================================================\n\n";
+											  	system("pause");
+												system ("cls");
+										}		
+									}
+								}
+						} 
+					else if (choice == 3 )
+					
+						{
+						cout<<"\n\t\t\t\tFamily Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1011' '1012' '1013' '1014' '1015'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*140;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+										cout << "\n\t\t==================================================" << endl;
+    									cout << "\n\t\tWelcome to Backpacker Hostel " << endl;
+    									cout << "\n\t\t==================================================" << endl;
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+
+										rp.generateReceipt();
+									
+										choice = 0;		
+										while (choice < 1 || choice > 3)
+										{
+												system ("cls");
+											
+												cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+												cout<<"\t\t\t\t\t\tCustomer ID :"<<CustEmail<<endl;
+												cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+											 	cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+
+											  	cout<<"\t\t\t\t  ====================================================\n\n";
+											  	system("pause");
+												system ("cls");
+										}		
+									}
+								}
+							}
+						
+			
+    		}
+		}
+
+					
+					
+					
+	else if (choice == 2) //register
+	
+               	{
+					
+                	system ("cls");
+					cout << "\n\t\t\t==================================================" << endl;
+    				cout << "\n\t\t\tWelcome to Backpacker Hostel " << endl;
+    				cout << "\n\t\t\t==================================================" << endl;
+                	cout << "\n\t\t\t Register Now"  << endl;
+                	cout << "\n\t\tEnter your First Name : ";
+					getline(cin, FirstName);
+					cout << "\n\t\tEnter your Last Name : ";
+					getline(cin, LastName);	
+					cout << "\n\t\tEnter Phone Number : ";
+					getline (cin, CustPhone);          
+                	cout << "\n\t\tEnter Email (yourname@gmail.com): ";
+                    getline(cin, CustEmail);
+                     
+                    		 if (FirstName =="")
+                    			{
+                     				system ("cls");
+                     				printf ("\n\t Please fill in First Name !");
+					 			}
+					 			
+					 		 if (LastName=="")
+					 		 	{
+					 		 		system ("cls");
+					 		 		printf("\n\t\t\t Please fill in Last Name !");	
+								}
+								  
+							 if (CustPhone=="")
+							 	{
+							 	system ("cls");
+							 	printf("\n\t\t\tPlease fill in Phone Number !");
+								}
+							 
+        					if (CustEmail == "")
+		        				{
+		        				system ("cls");
+		        				cout << "\t\t\t\tPlease enter your email" << endl;
+		        				}
+		    }//register
+
+			    
+					
+						{
+							
+						system("cls");
+						cout<<"\n\n\t\t\t\t  ====================================================";
+        				cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        				cout<<"\t\t\t\t  ====================================================\n\n";
+						cout <<"\n\n\t\t\t\t\t\tType of Room that we offer ";
+    					cout<<"\n\n\t\t\t\t\t\t1) Standard Room (RM100.00)\n";
+	      				cout<<"\t\t\t\t\t\t2) King Room (RM120.00)\n";   
+         				cout<<"\t\t\t\t\t\t3) Family Room (RM140.00)\n";
+	         			cout << "\n\t\t\t\t\t\tEnter Choice: ";
+	         			cin >> choice;
+						while (choice != 1 || choice != 2 || choice != 3 )
+						
+						if (choice == 1 )
+						{
+						cout<<"\n\t\t\t\tStandard Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1001' '1002' '1003' '1004' '1005'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*100;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+										cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel\n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+
+										rp.generateReceipt();
+									
+										choice = 0;		
+										while (choice < 1 || choice > 3)
+										{
+											system ("cls");
+											
+												cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+												cout<<"\t\t\t\t\t\tCustomer ID :"<<CustEmail<<endl;
+												cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+											 	cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+
+												cout<<"\t\t\t\t  ====================================================\n\n";
+												system("pause");
+												system ("cls");
+										}		
+									}
+								}
+							}
+							
+							
+						else if (choice == 2 )
+						{
+						cout<<"\n\t\t\t\tKing Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1006' '1007' '1008' '1009' '1010'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*120;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+										cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+
+										rp.generateReceipt();
+									
+										choice = 0;		
+										while (choice < 1 || choice > 3)
+										{
+											system ("cls");
+											
+												cout<<"\n\n\t\t\t\t  ====================================================";
+        										cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        										cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+												cout<<"\t\t\t\t\t\tCustomer ID :"<<CustEmail<<endl;
+												cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+												cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+
+											 	cout<<"\t\t\t\t  ====================================================\n\n";
+											 	system("pause");
+												system ("cls");
+										}		
+									}
+								}
+							} 
+					else if (choice == 3 )
+						{
+						cout<<"\n\t\t\t\tFamily Room\n";
+						cout<<"\t\t\t\tRoom Availble:'1011' '1012' '1013' '1014' '1015'\n";
+						cout<<"\t\t\t\tPlease enter your room number:";
+						cin>>room_number;
+						price = day*140;
+						cout<<"\n\t\t\t\t\t\tThe price is:RM"<<price<<"\n";
+						cout << "\n\t\t Confirm Booking ?" << endl;
+								
+								cout << "\n\t\t1. YES";
+								cout << "\n\t\t2. NO";
+								cout << "\n\t\tEnter choice: ";
+								cin >> choice;
+								
+								
+								if (choice == 1)
+								{
+									bk.confirmBooking();
+									
+									choice = 0;
+									
+									while (choice < 1 || choice > 3) 
+									{
+										system ("cls");
+										cout<<"\n\n\t\t\t\t  ====================================================";
+        								cout<<"\n\t\t\t\t\t\t WELCOME TO Backpacker Hostel \n";
+        								cout<<"\t\t\t\t  ====================================================\n\n";
+    									cout << "\n\t\t Do you want to review receipt? " << endl;
+    									cout << "\n\t\t1. YES";
+										cout << "\n\t\t2. NO";
+										cout << "\n\t\tEnter choice: ";
+										cin >> choice;
+
+										if (choice == 1)
+                                        {
+										
+									 	rp.generateReceipt();
+									 	
+										}
+										choice = 0 ;		
+										while (choice < 1 || choice > 3)
+										{
+											system ("cls");
+										
+											
+											 cout<<"\n\n\t\t\t\t  ====================================================";
+        									 cout<<"\n\t\t\t\t\t\t WELCOME TO Backpaker Hostel\n";
+        									 cout<<"\t\t\t\t  ====================================================\n\n";
+    											
+			
+											 cout<<"\t\t\t\t\t\tCustomer ID :"<<room_number<<endl;
+											 cout<<"\t\t\t\t\t\tPayment(RM) :"<<price<<endl;
+											 cout<<"\t\t\t\t\t\tRoom Number :"<<room_number<<endl;
+											 cout<<"\t\t\t\t  ====================================================\n\n";
+											system("pause");
+											system ("cls");
+									 	}
+									}
+								}
+						}
+					}
+				
+			
+    		}
+    	} 
+	}
+}
+
+} 
